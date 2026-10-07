@@ -30,7 +30,7 @@ st.markdown(
     <style>
         .block-container { padding-top: 2rem; padding-bottom: 3rem; }
         [data-testid="stMetric"] {
-            background: #f4f7fb;
+            background: #26528c;
             border: 1px solid #e5eaf1;
             padding: 1rem 1.2rem;
             border-radius: 12px;
