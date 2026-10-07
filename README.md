@@ -168,11 +168,30 @@ La versión original de `tratado.py` tenía cuatro problemas que distorsionaban 
 
 ## 8. Cómo ejecutar
 
+### Pauta para presentar el análisis
+
+La [pauta de presentación](./Pauta_presentacion.md) recomienda qué incluir en cada
+lámina: títulos, gráficos, cifras destacadas, capturas del dashboard y limitaciones.
+
+### Dashboard interactivo
+
+Instala las dependencias del proyecto e inicia la aplicación:
+
+```powershell
+python -m pip install -r requirements.txt
+python -m streamlit run dashboard.py
+```
+
+Al abrirse, el dashboard genera los resultados mediante `tratado.py` si no existen
+o si las fuentes han cambiado. El primer cálculo puede tardar porque el archivo
+SUSESO ocupa aproximadamente 278 MB. La aplicación presenta indicadores generales,
+gráficos y tablas comparables por región y sector; también permite cambiar la métrica
+y el número de categorías mostradas.
+
+### Ejecución del tratamiento por separado
+
 ```powershell
 python tratado.py
 ```
 
 Requisitos: Python 3.10+ y pandas. El script lee los CSV desde la carpeta `data/` y sobrescribe `resultado_region.csv` y `resultado_sector.csv`. Para analizar otro año, cambiar la constante `ANIO_ANALISIS` (los accidentes están disponibles de 2015 a mayo de 2026; la ENE descargada solo es comparable con 2024).
-
-
-
