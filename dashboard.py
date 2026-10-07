@@ -44,14 +44,18 @@ st.markdown(
 
 def ensure_results():
     """Generate the analysis outputs when they're missing or out of date."""
+    outputs = (REGION_PATH, SECTOR_PATH)
     missing_sources = [path.name for path in SOURCE_PATHS if not path.exists()]
     if missing_sources:
+        if all(output.exists() for output in outputs):
+            # Deployments such as Streamlit Community Cloud ship only the
+            # precomputed outputs, not the multi-hundred-MB source files.
+            return
         raise FileNotFoundError(
             "No se encontraron los archivos fuente en data/: "
             + ", ".join(missing_sources)
         )
 
-    outputs = (REGION_PATH, SECTOR_PATH)
     needs_refresh = any(
         not output.exists()
         or any(source.stat().st_mtime > output.stat().st_mtime for source in SOURCE_PATHS)
