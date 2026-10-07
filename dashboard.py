@@ -145,7 +145,7 @@ def show_table(frame, category_column):
     display["Accidentes por 100.000 ocupados"] = display[
         "Accidentes por 100.000 ocupados"
     ].map(lambda value: number(value, 1))
-    st.dataframe(display, hide_index=True, use_container_width=True)
+    st.dataframe(display, hide_index=True, width="stretch")
 
 
 st.title("Accidentabilidad laboral en Chile")
@@ -199,7 +199,7 @@ with overview_tab:
                 "#2563eb",
                 340,
             ),
-            use_container_width=True,
+            width="stretch",
         )
     with right:
         st.subheader("Tasa por sector")
@@ -212,7 +212,7 @@ with overview_tab:
                 "#0f766e",
                 340,
             ),
-            use_container_width=True,
+            width="stretch",
         )
     st.info(
         "La cobertura regional de la ENE descargada no incluye Los Lagos, Aysén ni "
@@ -246,7 +246,7 @@ with regions_tab:
             "#2563eb",
             max(280, region_count * 30),
         ),
-        use_container_width=True,
+        width="stretch",
     )
     show_table(region_view, "Región")
 
@@ -280,7 +280,7 @@ with sectors_tab:
             "#0f766e",
             max(280, sector_count * 34),
         ),
-        use_container_width=True,
+        width="stretch",
     )
     show_table(sector_view, "Sector_ES")
     st.warning(

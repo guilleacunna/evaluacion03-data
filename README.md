@@ -192,7 +192,11 @@ y el número de categorías mostradas.
 
 ### Publicación en línea (Streamlit Community Cloud)
 
-El dashboard se publica gratis en Streamlit Community Cloud, que se despliega
+El dashboard está publicado y disponible para cualquier visitante en:
+
+**<https://evaluacion03-data-duqtvdnup85njpqjgyj9jx.streamlit.app>**
+
+La publicación es gratuita en Streamlit Community Cloud, que se despliega
 directamente desde este repositorio de GitHub:
 
 1. Entra en <https://share.streamlit.com> e inicia sesión con tu cuenta de GitHub.
