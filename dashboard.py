@@ -44,14 +44,18 @@ st.markdown(
 
 def ensure_results():
     """Generate the analysis outputs when they're missing or out of date."""
+    outputs = (REGION_PATH, SECTOR_PATH)
     missing_sources = [path.name for path in SOURCE_PATHS if not path.exists()]
     if missing_sources:
+        if all(output.exists() for output in outputs):
+            # Deployments such as Streamlit Community Cloud ship only the
+            # precomputed outputs, not the multi-hundred-MB source files.
+            return
         raise FileNotFoundError(
             "No se encontraron los archivos fuente en data/: "
             + ", ".join(missing_sources)
         )
 
-    outputs = (REGION_PATH, SECTOR_PATH)
     needs_refresh = any(
         not output.exists()
         or any(source.stat().st_mtime > output.stat().st_mtime for source in SOURCE_PATHS)
@@ -141,7 +145,7 @@ def show_table(frame, category_column):
     display["Accidentes por 100.000 ocupados"] = display[
         "Accidentes por 100.000 ocupados"
     ].map(lambda value: number(value, 1))
-    st.dataframe(display, hide_index=True, use_container_width=True)
+    st.dataframe(display, hide_index=True, width="stretch")
 
 
 st.title("Accidentabilidad laboral en Chile")
@@ -195,7 +199,7 @@ with overview_tab:
                 "#2563eb",
                 340,
             ),
-            use_container_width=True,
+            width="stretch",
         )
     with right:
         st.subheader("Tasa por sector")
@@ -208,7 +212,7 @@ with overview_tab:
                 "#0f766e",
                 340,
             ),
-            use_container_width=True,
+            width="stretch",
         )
     st.info(
         "La cobertura regional de la ENE descargada no incluye Los Lagos, Aysén ni "
@@ -242,7 +246,7 @@ with regions_tab:
             "#2563eb",
             max(280, region_count * 30),
         ),
-        use_container_width=True,
+        width="stretch",
     )
     show_table(region_view, "Región")
 
@@ -276,7 +280,7 @@ with sectors_tab:
             "#0f766e",
             max(280, sector_count * 34),
         ),
-        use_container_width=True,
+        width="stretch",
     )
     show_table(sector_view, "Sector_ES")
     st.warning(

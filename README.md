@@ -190,6 +190,25 @@ SUSESO ocupa aproximadamente 278 MB. La aplicación presenta indicadores general
 gráficos y tablas comparables por región y sector; también permite cambiar la métrica
 y el número de categorías mostradas.
 
+### Publicación en línea (Streamlit Community Cloud)
+
+El dashboard está publicado y disponible para cualquier visitante en:
+
+**<https://evaluacion03-data-duqtvdnup85njpqjgyj9jx.streamlit.app>**
+
+La publicación es gratuita en Streamlit Community Cloud, que se despliega
+directamente desde este repositorio de GitHub:
+
+1. Entra en <https://share.streamlit.com> e inicia sesión con tu cuenta de GitHub.
+2. Pulsa **Create app** → **Deploy from existing repo** y elige este repositorio.
+3. Rama: `main`; archivo principal: `dashboard.py`.
+4. Tras unos minutos queda disponible en una URL pública tipo `https://<nombre>.streamlit.app`.
+
+El repositorio incluye `resultado_region.csv` y `resultado_sector.csv` (unos pocos KB),
+que son los únicos datos que el dashboard necesita para funcionar. Los archivos fuente
+originales (265 MB el de SUSESO) se excluyen por el límite de 100 MB por archivo de
+GitHub; si no están presentes, la app usa directamente los resultados precalculados.
+
 ### Ejecución del tratamiento por separado
 
 ```powershell
